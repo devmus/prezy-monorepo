@@ -1,0 +1,22 @@
+{
+  "files": [],
+  "references": [
+    { "path": "apps/web" },
+    { "path": "apps/mobile-api" },
+    { "path": "mobile" },
+    { "path": "packages/auth" }
+  ],
+  "compilerOptions": {
+    "target": "ESNext",
+    "module": "ESNext",
+    "moduleResolution": "Node",
+    "baseUrl": ".",
+    "paths": {
+      "@prezy/auth": ["packages/auth"]
+    },
+    "strict": true,
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "forceConsistentCasingInFileNames": true
+  }
+}

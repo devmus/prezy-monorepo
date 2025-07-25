@@ -1,0 +1,18 @@
+{
+  "extends": "../../tsconfig.json",
+  "compilerOptions": {
+    "target": "ESNext",
+    "module": "ESNext",
+    "moduleResolution": "Node",
+    "esModuleInterop": true,
+    "strict": true,
+    "baseUrl": ".", // local base for this package
+    "composite": true, // ✅ Required for project references
+    "declaration": true, // ✅ Emit .d.ts files so others can consume it
+    "declarationMap": true,
+    "emitDeclarationOnly": true, // Only emit types, not JS
+    "outDir": "dist" // where .d.ts files will go
+  },
+  "include": ["**/*.ts"],
+  "exclude": ["dist", "node_modules"]
+}
