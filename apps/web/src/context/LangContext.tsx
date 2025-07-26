@@ -16,6 +16,7 @@ import sidebar_th from '@/locales/th/sidebar.json' assert { type: 'json' };
 import auth_th from '@/locales/th/auth.json' assert { type: 'json' };
 import common_th from '@/locales/th/common.json' assert { type: 'json' };
 import { FullTranslationKey, Lang, LangContextType, Namespace } from '@/types';
+import { useAuth } from '@/hooks/useAuth';
 
 const translations = {
     en: {
@@ -42,13 +43,21 @@ const LangContext = createContext<LangContextType | undefined>(undefined);
 
 export const LangProvider = ({ children }: { children: React.ReactNode }) => {
     const [lang, setLangState] = useState<Lang>('en');
+    const { user } = useAuth(); // ✅ use custom hook
 
     useEffect(() => {
+        // First priority: user's preferred language
+        if (user?.language && ['en', 'sv', 'th'].includes(user.language)) {
+            setLangState(user.language as Lang);
+            return;
+        }
+
+        // Fallback: localStorage
         const storedLang = localStorage.getItem('lang') as Lang;
         if (storedLang && translations[storedLang]) {
-            setLangState(storedLang);
+            setLangState(storedLang as Lang);
         }
-    }, []);
+    }, [user?.language]);
 
     const setLang = (lang: Lang) => {
         setLangState(lang);

@@ -9,16 +9,22 @@ import {
     Mail,
     Gift,
     Store,
-    //  Settings,
+    Settings,
     Menu,
     ArrowLeftFromLine,
+    Info,
+    CircleUserRound,
+    LogIn,
+    LogOut,
 } from 'lucide-react';
 import Link from 'next/link';
 import { useState, useEffect } from 'react';
 import LanguageSwitcher from './LanguageSwitcher';
 import { useLang } from '@/context/LangContext';
+import { useAuth } from '@/hooks/useAuth';
 
 export default function Sidebar() {
+    const { user, isLoggedIn, isLoading, isAdmin } = useAuth();
     const [isCollapsed, setIsCollapsed] = useState(false);
     const { t } = useLang();
 
@@ -45,14 +51,16 @@ export default function Sidebar() {
 
     const secondaryItems: NavigationItems[] = [
         { icon: Home, label: t('sidebar.home'), href: '/home' },
-        { icon: User, label: t('sidebar.about'), href: '/about' },
+        { icon: Info, label: t('sidebar.about'), href: '/about' },
         { icon: Mail, label: t('sidebar.contact'), href: '/contact' },
     ];
 
-    const tertiaryItems: NavigationItems[] = [
-        { icon: User, label: t('sidebar.login'), href: '/login' },
-        // { icon: Settings, label: 'Settings', href: '/settings' },
-    ];
+    const tertiaryItems: NavigationItems[] = user
+        ? [
+              { icon: CircleUserRound, label: t('sidebar.profile'), href: '/profile' },
+              { icon: LogOut, label: t('sidebar.logout'), href: '/login' },
+          ]
+        : [{ icon: LogIn, label: t('sidebar.login'), href: '/login' }];
 
     return (
         <div
@@ -85,7 +93,6 @@ export default function Sidebar() {
                     )}
                 </Button>
             </div>
-
             <div className="flex flex-col ">
                 <div>
                     {/* Navigation */}
@@ -150,28 +157,11 @@ export default function Sidebar() {
                     </div>
                 </div>
 
+                {/* Langague switcher */}
                 <div className="flex flex-col justify-center items-center gap-2">
-                    {/* <p>Language:</p> */}
                     <LanguageSwitcher isCollapsed={isCollapsed} />
                 </div>
             </div>
-
-            {/* User Profile
-            {!isCollapsed && (
-                <div className="absolute bottom-4 left-4 right-4">
-                    <div className="flex items-center space-x-3 p-3 bg-muted rounded-lg">
-                        <div className="w-8 h-8 bg-primary rounded-full flex items-center justify-center">
-                            <span className="text-primary-foreground text-sm font-medium">U</span>
-                        </div>
-                        <div className="flex-1 min-w-0">
-                            <p className="text-sm font-medium truncate">User Name</p>
-                            <p className="text-xs text-muted-foreground truncate">
-                                user@example.com
-                            </p>
-                        </div>
-                    </div>
-                </div>
-            )} */}
         </div>
     );
 }

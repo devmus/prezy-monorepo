@@ -1,17 +1,24 @@
 'use client';
 
-import { signIn, signOut, useSession } from 'next-auth/react';
+import { useAuth } from '@/hooks/useAuth';
+import { signIn, signOut } from 'next-auth/react';
 
 export default function AuthButton() {
-    const { data: session, status } = useSession();
+    const { user, isLoggedIn, isLoading } = useAuth();
 
-    if (status === 'loading') return <p>Loading...</p>;
+    const handleLogin = () => {
+        const lang = localStorage.getItem('lang') || 'en';
+        document.cookie = `preferred_lang=${lang}; path=/`;
+        signIn('google');
+    };
 
-    if (session) {
+    if (isLoading) return <p>Loading...</p>;
+
+    if (isLoggedIn && user) {
         return (
             <div className="flex items-center gap-4">
                 <p>
-                    Signed in as {session.user?.email} ({session.user?.role})
+                    Signed in as {user?.email} ({user?.role})
                 </p>
                 <button
                     className="bg-red-500 text-white px-4 py-2 rounded"
@@ -24,10 +31,7 @@ export default function AuthButton() {
     }
 
     return (
-        <button
-            className="bg-blue-600 text-white px-4 py-2 rounded"
-            onClick={() => signIn('google')}
-        >
+        <button className="bg-blue-600 text-white px-4 py-2 rounded" onClick={handleLogin}>
             Sign in with Google
         </button>
     );

@@ -39,7 +39,9 @@ export default function ServicePreview({
                             src={imageUrl}
                             alt={name || 'Preview image'}
                             fill
+                            sizes="(max-width: 768px) 100vw, 33vw"
                             className="object-cover"
+                            priority
                         />
                     </div>
                 </div>

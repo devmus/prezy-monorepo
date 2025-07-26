@@ -5,6 +5,8 @@ import Link from 'next/link';
 import Image from 'next/image';
 
 export default function ServiceCard({ service, serviceList }: ServiceCardProps) {
+    console.log(service);
+
     return (
         <Link href={`/service/${service._id}`}>
             <div className="group transition-transform duration-200 hover:-translate-y-1">
@@ -15,7 +17,9 @@ export default function ServiceCard({ service, serviceList }: ServiceCardProps) 
                                 src={service.imageUrl}
                                 alt={service.name}
                                 fill
+                                sizes="(max-width: 768px) 100vw, 33vw"
                                 className="object-cover"
+                                priority
                             />
                         </div>
                     )}

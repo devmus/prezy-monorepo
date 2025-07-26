@@ -1,7 +1,8 @@
 import GoogleProvider from "next-auth/providers/google";
 import { MongoDBAdapter } from "@next-auth/mongodb-adapter";
-import clientPromise from "./mongo";
+import clientPromise from "./lib/mongo";
 import { NextAuthOptions } from "next-auth";
+import { findOrCreateUser } from "@prezy/auth";
 
 export const authOptions: NextAuthOptions = {
   providers: [
@@ -13,12 +14,19 @@ export const authOptions: NextAuthOptions = {
   adapter: MongoDBAdapter(clientPromise),
   session: { strategy: "jwt" },
   callbacks: {
-    async jwt({ token, user }) {
-      if (user) token.role = user.role;
+    async jwt({ token, user, account, profile }) {
+      if (user?.email) {
+        const dbUser = await findOrCreateUser(user.email, user.name);
+        token.role = dbUser.role;
+        token._id = dbUser._id;
+      }
       return token;
     },
     async session({ session, token }) {
-      if (session.user) session.user.role = token.role;
+      if (session.user) {
+        session.user.role = token.role;
+        session.user._id = token._id;
+      }
       return session;
     },
   },

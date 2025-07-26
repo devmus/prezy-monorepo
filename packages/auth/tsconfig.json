@@ -11,8 +11,9 @@
     "declaration": true, // ✅ Emit .d.ts files so others can consume it
     "declarationMap": true,
     "emitDeclarationOnly": true, // Only emit types, not JS
-    "outDir": "dist" // where .d.ts files will go
+    "outDir": "dist", // where .d.ts files will go
+    "typeRoots": ["./types", "../../node_modules/@types"]
   },
-  "include": ["**/*.ts"],
+  "include": ["index.ts", "lib/**/*.ts", "models/**/*.ts", "types/**/*.d.ts"],
   "exclude": ["dist", "node_modules"]
 }

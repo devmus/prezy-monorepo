@@ -4,5 +4,7 @@
     "home": "Home",
     "about": "About",
     "contact": "Contact",
-    "login": "Log in"
+    "login": "Log in",
+    "logout": "Log out",
+    "profile": "Profile"
 }

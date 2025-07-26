@@ -4,5 +4,7 @@
     "home": "Hem",
     "about": "Om oss",
     "contact": "Kontakt",
-    "login": "Logga in"
+    "login": "Logga in",
+    "logout": "Logga ut",
+    "profile": "Profil"
 }

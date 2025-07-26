@@ -72,7 +72,7 @@ export default function LanguageSwitcher({ isCollapsed = false }: LanguageSwitch
                                     />
                                 </div>
                                 {!isCollapsed && <span>{t(option.label)}</span>}
-                                {selected.code === option.code && (
+                                {selected.code === option.code && !isCollapsed && (
                                     <Check className="w-4 h-4 ml-auto text-primary" />
                                 )}
                             </Listbox.Option>
