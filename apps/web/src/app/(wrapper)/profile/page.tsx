@@ -45,8 +45,8 @@ export default function ProfilePage() {
                 <b>Role:</b> {user.role ?? 'unknown'}
             </p>
 
-            <div>
-                <label className="block mb-1 font-medium">Preferred Language</label>
+            <div className="flex flex-row items-center gap-2">
+                <div className="mb-1 font-medium">Preferred Language: </div>
                 <select
                     value={lang}
                     onChange={handleLanguageChange}

@@ -21,7 +21,7 @@
             }
         ]
     },
-    "references": [{ "path": "../../packages/auth" }],
+    "references": [{ "path": "../../packages/auth/src" }],
     "include": [
         "next-env.d.ts",
         "**/*.ts",

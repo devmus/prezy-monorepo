@@ -16,7 +16,7 @@ export default function AuthButton() {
 
     if (isLoggedIn && user) {
         return (
-            <div className="flex items-center gap-4">
+            <div className="flex flex-col gap-4">
                 <p>
                     Signed in as {user?.email} ({user?.role})
                 </p>
@@ -31,8 +31,10 @@ export default function AuthButton() {
     }
 
     return (
-        <button className="bg-blue-600 text-white px-4 py-2 rounded" onClick={handleLogin}>
-            Sign in with Google
-        </button>
+        <div className="flex flex-col gap-4">
+            <button className="bg-blue-600 text-white px-4 py-2 rounded" onClick={handleLogin}>
+                Sign in with Google
+            </button>
+        </div>
     );
 }

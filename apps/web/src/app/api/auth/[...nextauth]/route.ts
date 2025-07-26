@@ -1,5 +1,5 @@
 import NextAuth from 'next-auth';
-import { authOptions } from '@prezy/auth';
+import { authOptions } from '@prezy/auth/src';
 
 const handler = NextAuth(authOptions);
 

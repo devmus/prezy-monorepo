@@ -1,8 +1,8 @@
 import GoogleProvider from "next-auth/providers/google";
 import { MongoDBAdapter } from "@next-auth/mongodb-adapter";
-import clientPromise from "./lib/mongo";
+import clientPromise from "../lib/mongo";
 import { NextAuthOptions } from "next-auth";
-import { findOrCreateUser } from "@prezy/auth";
+import { findOrCreateUser } from "@prezy/auth/src/";
 
 export const authOptions: NextAuthOptions = {
   providers: [

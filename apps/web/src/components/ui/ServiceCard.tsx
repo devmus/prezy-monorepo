@@ -1,8 +1,13 @@
 'use client';
 
-import { ServiceCardProps } from '@/types';
+import { IService } from '@/types';
 import Link from 'next/link';
 import Image from 'next/image';
+
+export interface ServiceCardProps {
+    service: IService;
+    serviceList: boolean;
+}
 
 export default function ServiceCard({ service, serviceList }: ServiceCardProps) {
     console.log(service);

@@ -13,8 +13,3 @@ export interface IService extends Document {
     createdAt: Date;
     updatedAt: Date;
 }
-
-export interface ServiceCardProps {
-    service: IService;
-    serviceList: boolean;
-}
