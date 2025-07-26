@@ -1,7 +1,7 @@
 // apps/web/hooks/useAuth.ts
 
 import { useSession } from 'next-auth/react';
-import { SessionUser } from '@prezy/auth/types/auth-types'; // your shared type
+import { SessionUser } from '@prezy/auth'; // your shared type
 
 export function useAuth() {
     const { data: session, status } = useSession();

@@ -32,7 +32,7 @@
     "resolveJsonModule": true,
     "esModuleInterop": true,
     "forceConsistentCasingInFileNames": true,
-    "noEmit": true,
+    // "noEmit": true,
     "incremental": true,
     "isolatedModules": true,
     "declaration": true,

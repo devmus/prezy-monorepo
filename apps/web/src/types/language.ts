@@ -1,7 +1,7 @@
-import addStore_en from '@/locales/en/addStore.json' assert { type: 'json' };
-import sidebar_en from '@/locales/en/sidebar.json' assert { type: 'json' };
-import auth_en from '@/locales/en/auth.json' assert { type: 'json' };
-import common_en from '@/locales/en/common.json' assert { type: 'json' };
+import addStore_en from '@/locales/en/addStore.json';
+import sidebar_en from '@/locales/en/sidebar.json';
+import auth_en from '@/locales/en/auth.json';
+import common_en from '@/locales/en/common.json';
 
 // This assumes all locales have same structure, so just use 'en'
 export const translations_en = {

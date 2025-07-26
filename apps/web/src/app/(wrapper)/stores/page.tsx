@@ -1,7 +1,6 @@
 'use client';
 
 import { useRouter } from 'next/navigation';
-import Link from 'next/link';
 import useSWR from 'swr';
 import { IStore } from '@/types';
 import { fetcher } from '@/lib/fetcher';

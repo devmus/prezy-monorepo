@@ -2,7 +2,14 @@ import GoogleProvider from "next-auth/providers/google";
 import { MongoDBAdapter } from "@next-auth/mongodb-adapter";
 import { NextAuthOptions } from "next-auth";
 import { findOrCreateUser } from "@prezy/auth";
-import { clientPromise } from "@prezy/auth";
+import { clientPromise, SessionUser, AppJWT } from "@prezy/auth";
+
+interface ISession {
+  session: SessionUser;
+  token: AppJWT;
+}
+
+//HOW TO FIX session.user.role and session.user._id ???
 
 export const authOptions: NextAuthOptions = {
   providers: [
@@ -22,7 +29,7 @@ export const authOptions: NextAuthOptions = {
       }
       return token;
     },
-    async session({ session, token }) {
+    async session({ session, token }: ISession) {
       if (session.user) {
         session.user.role = token.role;
         session.user._id = token._id;

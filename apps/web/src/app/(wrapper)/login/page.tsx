@@ -4,14 +4,14 @@ import AuthButton from '@/components/AuthButton';
 import { useAuth } from '@/hooks/useAuth';
 
 export default function LoginPage() {
-    const { user, isLoggedIn, isLoading } = useAuth();
+    const { user, isLoggedIn } = useAuth();
 
     return (
         <div className="flex-1 p-8">
             <div className="max-w-4xl mx-auto">
                 {isLoggedIn ? (
                     <>
-                        <h1 className="text-3xl font-bold mb-6">You are signed in.</h1>
+                        <h1 className="text-3xl font-bold mb-6">You are signed in {user?.name}</h1>
                         <p className="text-muted-foreground mb-8">
                             Log out by clicking the button.
                         </p>

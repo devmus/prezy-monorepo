@@ -1,20 +1,20 @@
 'use client';
 
 import React, { createContext, useContext, useEffect, useState } from 'react';
-import addStore_en from '@/locales/en/addStore.json' assert { type: 'json' };
-import sidebar_en from '@/locales/en/sidebar.json' assert { type: 'json' };
-import auth_en from '@/locales/en/auth.json' assert { type: 'json' };
-import common_en from '@/locales/en/common.json' assert { type: 'json' };
+import addStore_en from '@/locales/en/addStore.json';
+import sidebar_en from '@/locales/en/sidebar.json';
+import auth_en from '@/locales/en/auth.json';
+import common_en from '@/locales/en/common.json';
 
-import addStore_sv from '@/locales/sv/addStore.json' assert { type: 'json' };
-import sidebar_sv from '@/locales/sv/sidebar.json' assert { type: 'json' };
-import auth_sv from '@/locales/sv/auth.json' assert { type: 'json' };
-import common_sv from '@/locales/sv/common.json' assert { type: 'json' };
+import addStore_sv from '@/locales/sv/addStore.json';
+import sidebar_sv from '@/locales/sv/sidebar.json';
+import auth_sv from '@/locales/sv/auth.json';
+import common_sv from '@/locales/sv/common.json';
 
-import addStore_th from '@/locales/th/addStore.json' assert { type: 'json' };
-import sidebar_th from '@/locales/th/sidebar.json' assert { type: 'json' };
-import auth_th from '@/locales/th/auth.json' assert { type: 'json' };
-import common_th from '@/locales/th/common.json' assert { type: 'json' };
+import addStore_th from '@/locales/th/addStore.json';
+import sidebar_th from '@/locales/th/sidebar.json';
+import auth_th from '@/locales/th/auth.json';
+import common_th from '@/locales/th/common.json';
 import { FullTranslationKey, Lang, LangContextType, Namespace } from '@/types';
 import { useAuth } from '@/hooks/useAuth';
 

@@ -5,11 +5,9 @@ import { Separator } from '@/components/ui/separator';
 import { NavigationItems } from '@/types';
 import {
     Home,
-    User,
     Mail,
     Gift,
     Store,
-    Settings,
     Menu,
     ArrowLeftFromLine,
     Info,
@@ -24,7 +22,10 @@ import { useLang } from '@/context/LangContext';
 import { useAuth } from '@/hooks/useAuth';
 
 export default function Sidebar() {
-    const { user, isLoggedIn, isLoading, isAdmin } = useAuth();
+    const {
+        user,
+        // , isLoggedIn, isLoading, isAdmin
+    } = useAuth();
     const [isCollapsed, setIsCollapsed] = useState(false);
     const { t } = useLang();
 
