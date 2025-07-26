@@ -1,0 +1,46 @@
+// {
+//   "files": [],
+//   "references": [
+//     { "path": "apps/web" },
+//     { "path": "apps/mobile-api" },
+//     { "path": "mobile" },
+//     { "path": "packages/auth" }
+//   ],
+//   "compilerOptions": {
+//     "target": "ESNext",
+//     "module": "ESNext",
+//     "moduleResolution": "Node",
+//     "baseUrl": ".",
+//     "paths": {
+//       "@prezy/auth": ["packages/auth"]
+//     },
+//     "strict": true,
+//     "esModuleInterop": true,
+//     "skipLibCheck": true,
+//     "forceConsistentCasingInFileNames": true
+//   }
+// }
+
+{
+  "compilerOptions": {
+    "target": "ESNext",
+    "module": "NodeNext",
+    "moduleResolution": "NodeNext",
+    "lib": ["dom", "dom.iterable", "esnext"],
+    "strict": true,
+    "allowJs": true,
+    "resolveJsonModule": true,
+    "esModuleInterop": true,
+    "forceConsistentCasingInFileNames": true,
+    "noEmit": true,
+    "incremental": true,
+    "isolatedModules": true,
+    "declaration": true,
+    "declarationMap": true,
+    "baseUrl": ".", // required for paths
+    "paths": {
+      "@prezy/auth": ["packages/auth/src"],
+      "@/*": ["apps/web/src/*"]
+    }
+  }
+}

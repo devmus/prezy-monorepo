@@ -1,22 +1,30 @@
+// {
+//   "extends": "../../tsconfig.json",
+//   "compilerOptions": {
+//     "target": "ESNext",
+//     "module": "ESNext",
+//     "moduleResolution": "Node",
+//     "esModuleInterop": true,
+//     "strict": true,
+//     "baseUrl": ".", // local base for this package
+//     "composite": true, // ✅ Required for project references
+//     "declaration": true, // ✅ Emit .d.ts files so others can consume it
+//     "declarationMap": true,
+//     "emitDeclarationOnly": true, // Only emit types, not JS
+//     "outDir": "dist", // where .d.ts files will go
+//     "typeRoots": ["./types", "../../node_modules/@types"]
+//   },
+//   "include": [
+//     "src/**/*.ts",
+//     "lib/**/*.ts",
+//     "models/**/*.ts",
+//     "types/**/*.d.ts"
+//   ],
+//   "exclude": ["dist", "node_modules"]
+// }
+// tsconfig.base.json or tsconfig.json in root
 {
   "files": [],
-  "references": [
-    { "path": "apps/web" },
-    { "path": "apps/mobile-api" },
-    { "path": "mobile" },
-    { "path": "packages/auth" }
-  ],
-  "compilerOptions": {
-    "target": "ESNext",
-    "module": "ESNext",
-    "moduleResolution": "Node",
-    "baseUrl": ".",
-    "paths": {
-      "@prezy/auth": ["packages/auth"]
-    },
-    "strict": true,
-    "esModuleInterop": true,
-    "skipLibCheck": true,
-    "forceConsistentCasingInFileNames": true
-  }
+  "references": [{ "path": "apps/web" }, { "path": "packages/auth" }],
+  "extends": "./tsconfig.base.json"
 }

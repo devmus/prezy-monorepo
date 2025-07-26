@@ -1,41 +1,27 @@
-// {
-//   "extends": "../../tsconfig.json",
-//   "compilerOptions": {
-//     "target": "ESNext",
-//     "module": "ESNext",
-//     "moduleResolution": "Node",
-//     "esModuleInterop": true,
-//     "strict": true,
-//     "baseUrl": ".", // local base for this package
-//     "composite": true, // ✅ Required for project references
-//     "declaration": true, // ✅ Emit .d.ts files so others can consume it
-//     "declarationMap": true,
-//     "emitDeclarationOnly": true, // Only emit types, not JS
-//     "outDir": "dist", // where .d.ts files will go
-//     "typeRoots": ["./types", "../../node_modules/@types"]
-//   },
-//   "include": [
-//     "src/**/*.ts",
-//     "lib/**/*.ts",
-//     "models/**/*.ts",
-//     "types/**/*.d.ts"
-//   ],
-//   "exclude": ["dist", "node_modules"]
-// }
-
 {
+  "extends": "../../tsconfig.base.json",
   "compilerOptions": {
-    "outDir": "dist",
-    "rootDir": "src",
+    "composite": true, // 👈 Required for project references
     "declaration": true,
-    "declarationMap": true,
-    "emitDeclarationOnly": false,
-    "module": "NodeNext", // ✅ fix this line
+    "outDir": "dist",
+    "rootDir": ".",
+    "module": "ESNext",
     "target": "ESNext",
-    "moduleResolution": "NodeNext", // ✅ this now matches
+    "moduleResolution": "Node",
     "esModuleInterop": true,
-    "skipLibCheck": true,
-    "strict": true
+    "strict": true,
+    "skipLibCheck": true
   },
-  "include": ["src"]
+  "include": ["src", "types", "lib", "models"]
 }
+
+// {
+//   "compilerOptions": {
+//     "composite": true,
+//     "baseUrl": ".", // optional: for local imports inside package
+//     "paths": {
+//       "@/*": ["src/*"]
+//     }
+//   },
+//   "include": ["src", "types", "lib", "models"]
+// }
