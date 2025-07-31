@@ -1,38 +1,5 @@
-// {
-//     "extends": "../../tsconfig.json",
-//     "compilerOptions": {
-//         "composite": true, // ⬅️ Required when using project references
-//         "strict": true,
-//         "baseUrl": ".", // still needed for local aliases like @/*
-//         "paths": {
-//             "@/*": ["src/*"], // resolve local imports like @/components
-//             "@prezy/auth": ["../../packages/auth"] // shared package alias from root config
-//         },
-//         "jsx": "preserve", // keep if you're using Next.js App Router
-//         "incremental": true,
-//         "lib": ["dom", "dom.iterable", "esnext"],
-//         "allowJs": true,
-//         "noEmit": true,
-//         "resolveJsonModule": true,
-//         "isolatedModules": true,
-//         "plugins": [
-//             {
-//                 "name": "next"
-//             }
-//         ]
-//     },
-//     "references": [{ "path": "../../packages/auth" }],
-//     "include": [
-//         "next-env.d.ts",
-//         "**/*.ts",
-//         "**/*.tsx",
-//         ".next/types/**/*.ts",
-//         "src",
-//         "src/types/global.d.ts",
-//         "../../packages/auth/types"
-//     ],
-//     "exclude": ["node_modules"]
-// }
+// apps/web/tsconfig.json
+
 {
     "extends": "../../tsconfig.base.json",
     "compilerOptions": {
@@ -51,6 +18,13 @@
             "path": "../../packages/auth"
         }
     ],
-    "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "types"],
+    "include": [
+        "next-env.d.ts",
+        "**/*.ts",
+        "**/*.tsx",
+        ".next/types/**/*.ts",
+        "types",
+        "../../packages/auth/types"
+    ],
     "exclude": ["node_modules"]
 }
