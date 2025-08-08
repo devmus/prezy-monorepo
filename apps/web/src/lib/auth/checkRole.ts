@@ -1,6 +1,6 @@
 import { getServerSession } from 'next-auth';
 import { authOptions, User, UserRole } from '@prezy/auth';
-import { connectToDatabase } from '@/lib/mongo';
+import { connectDB } from '@prezy/auth';
 
 // Define the type for the lean user object
 interface LeanUser {
@@ -26,7 +26,7 @@ export async function requireRoles(roles: UserRole[]): Promise<RequireRoleResult
         return { authorized: false, error: 'Unauthorized: No session' };
     }
 
-    await connectToDatabase();
+    await connectDB();
 
     const user = (await User.findOne({ email: session.user.email }).lean()) as LeanUser | null;
 

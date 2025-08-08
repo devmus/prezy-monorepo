@@ -24,7 +24,10 @@
         "**/*.tsx",
         ".next/types/**/*.ts",
         "types",
-        "../../packages/auth/types"
+        "../../packages/auth/types",
+        "../../packages/auth/models/Store.ts",
+        "../../packages/auth/models/Service.ts",
+        "../../packages/auth/models/Giftcard.ts"
     ],
     "exclude": ["node_modules"]
 }

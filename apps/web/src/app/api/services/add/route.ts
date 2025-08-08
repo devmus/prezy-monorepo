@@ -1,12 +1,12 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { connectToDatabase } from '@/lib/mongo';
-import Service from '@/models/Service';
-import Store from '@/models/Store';
+import { connectDB } from '@prezy/auth';
+import { Service } from '@/models/Service';
+import { Store } from '@/models/Store';
 import { AddServiceResponse } from '@/types/api';
 
 export async function POST(request: NextRequest) {
     try {
-        await connectToDatabase();
+        await connectDB();
         const { name, description, price, category, imageUrl, storeId } = await request.json();
 
         // Validate input

@@ -1,4 +1,4 @@
-// packages/auth/types/auth-types.ts
+// packages/auth/src/types/auth-types.ts
 
 import { UserRole } from "./user";
 

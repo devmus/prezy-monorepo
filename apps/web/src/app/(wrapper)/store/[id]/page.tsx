@@ -24,7 +24,7 @@ export default function StoreDetailsPage() {
 
     const currentStore = store.data.store;
 
-    const myStore = user?.email === currentStore.shopkeeper;
+    const myStore = user?.role === 'shopkeeper' && user?.email === currentStore.shopkeeper;
 
     return (
         <div className="flex flex-1 flex-col h-full p-8 justify-between">

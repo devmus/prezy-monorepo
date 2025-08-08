@@ -7,7 +7,7 @@ import { headers } from 'next/headers';
 // import stripeConfig from '§/utils/stripeConfig';
 // import { apiBonus100 } from '§/utils/configValues';
 
-import { connectToDatabase } from '@/lib/mongo';
+import { connectDB } from '@prezy/auth';
 
 export async function POST(request: NextRequest, { params }: { params: Promise<{ id: string }> }) {
     console.log('INSIDE');
@@ -24,7 +24,7 @@ export async function POST(request: NextRequest, { params }: { params: Promise<{
         const headersList = await headers();
         const origin = headersList.get('origin') || 'http://localhost:3000';
 
-        await connectToDatabase();
+        await connectDB();
 
         //Get userData from session
         // const userData = await User.findOne({ email: user.email });

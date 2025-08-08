@@ -3,7 +3,7 @@
 import GoogleProvider from "next-auth/providers/google";
 import { MongoDBAdapter } from "@next-auth/mongodb-adapter";
 import { NextAuthOptions } from "next-auth";
-import { clientPromise } from "@prezy/auth";
+import { clientPromise } from "../lib/mongo";
 import { loginFunctions } from "../lib/loginFunctions";
 
 export const authOptions: NextAuthOptions = {

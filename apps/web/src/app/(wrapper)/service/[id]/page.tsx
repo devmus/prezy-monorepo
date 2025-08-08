@@ -5,7 +5,7 @@ import { useParams } from 'next/navigation';
 import useSWR from 'swr';
 import { fetcher } from '@/lib/fetcher';
 import { GetServiceResponse } from '@/types/api';
-import { IService } from '@/types/service';
+import { IService } from 'packages/auth/types/service';
 import Image from 'next/image';
 import Link from 'next/link';
 

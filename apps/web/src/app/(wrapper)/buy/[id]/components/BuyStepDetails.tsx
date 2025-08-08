@@ -20,37 +20,49 @@ export default function BuyStepDetails({ formStep, setFormStep, service }: BuySt
         <>
             <AnimatePresence initial={false}>
                 {formStep === 'details' && (
-                    <motion.div
-                        key="service-details"
-                        initial="collapsed"
-                        animate="open"
-                        exit="collapsed"
-                        variants={variants}
-                    >
-                        <div className="space-y-6">
-                            <div>
-                                <h2 className="text-xl font-semibold text-gray-700 mb-2">
-                                    Service Details
-                                </h2>
-                                <ServiceCard
-                                    key={service._id}
-                                    service={service}
-                                    serviceList={false}
-                                />
-                            </div>
+                    <>
+                        <motion.div
+                            key="service-details"
+                            initial="collapsed"
+                            animate="open"
+                            exit="collapsed"
+                            variants={variants}
+                        >
+                            <div className="space-y-6">
+                                <div>
+                                    <h2 className="text-xl font-semibold text-gray-700 mb-2">
+                                        Service Details
+                                    </h2>
+                                    <ServiceCard
+                                        key={service._id}
+                                        service={service}
+                                        serviceList={false}
+                                    />
+                                </div>
 
-                            <div>
-                                <h2 className="text-xl font-semibold text-gray-700 mb-2">
-                                    Store Information
-                                </h2>
-                                <StoreCard
-                                    key={service.store._id}
-                                    store={service.store}
-                                    user={null}
-                                />
+                                <div>
+                                    <h2 className="text-xl font-semibold text-gray-700 mb-2">
+                                        Store Information
+                                    </h2>
+                                    <StoreCard
+                                        key={service.store._id}
+                                        store={service.store}
+                                        user={null}
+                                    />
+                                </div>
                             </div>
+                        </motion.div>
+                        <div className="pt-4">
+                            <Button
+                                // onClick={handleConfirm}
+                                onClick={() => setFormStep('method')}
+                                variant="wide_blue"
+                                size="lg"
+                            >
+                                Confirm details
+                            </Button>
                         </div>
-                    </motion.div>
+                    </>
                 )}
             </AnimatePresence>
             <AnimatePresence initial={false}>
@@ -70,7 +82,8 @@ export default function BuyStepDetails({ formStep, setFormStep, service }: BuySt
                                 variant="confirmed_step"
                                 className="justify-left"
                             >
-                                Service Details Confirmed (click to view)
+                                <span>Service Details Confirmed</span>
+                                (click to view)
                             </Button>
                         </div>
                     </motion.div>

@@ -1,4 +1,4 @@
-import { UserData } from "@prezy/auth";
+import { UserData } from "../src/types/user";
 import mongoose from "mongoose";
 
 const UserSchema = new mongoose.Schema<UserData>({
@@ -16,4 +16,5 @@ const UserSchema = new mongoose.Schema<UserData>({
   },
 });
 
-export const User = mongoose.models.User || mongoose.model("User", UserSchema);
+export const User =
+  (mongoose.models?.User as any) || mongoose.model("User", UserSchema);

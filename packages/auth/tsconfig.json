@@ -12,7 +12,8 @@
     "strict": true,
     "skipLibCheck": true
   },
-  "include": ["src", "types", "lib", "models"]
+  "include": ["src", "lib", "models"],
+  "exclude": ["types", "dist", "node_modules"]
 }
 
 // {

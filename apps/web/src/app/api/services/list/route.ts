@@ -1,15 +1,13 @@
 import { NextResponse } from 'next/server';
-import { connectToDatabase } from '@/lib/mongo';
-import Service from '@/models/Service';
+import { connectDB } from '@prezy/auth';
 import { ListServicesResponse } from '@/types/api';
-import { IService } from '@/types/service';
-import Store from '@/models/Store';
+import { IService, Service, Store } from '@prezy/auth';
 
 void Store;
 
 export async function GET() {
     try {
-        await connectToDatabase();
+        await connectDB();
         const services: IService[] = await Service.find({}).populate('store');
 
         return NextResponse.json<ListServicesResponse>(

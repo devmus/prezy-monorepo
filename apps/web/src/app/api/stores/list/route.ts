@@ -1,5 +1,5 @@
 import { NextResponse } from 'next/server';
-import { connectToDatabase } from '@/lib/mongo';
+import { connectDB } from '@prezy/auth';
 import Store from '@/models/Store';
 import { ListStoresResponse } from '@/types/api';
 import { getServerSession } from 'next-auth';
@@ -7,7 +7,7 @@ import { authOptions } from '@prezy/auth';
 
 export async function GET(req: Request) {
     try {
-        await connectToDatabase();
+        await connectDB();
 
         const url = new URL(req.url);
         const mineOnly = url.searchParams.get('mine') === 'true';

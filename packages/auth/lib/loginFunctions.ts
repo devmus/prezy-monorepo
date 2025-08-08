@@ -1,6 +1,8 @@
-import { connectDB, User } from "@prezy/auth";
+import { connectDB } from "../lib/db";
+
 import type { JWT } from "next-auth/jwt";
 import type { User as NextAuthUser, Account } from "next-auth";
+import { User } from "../models/user.model";
 
 export const loginFunctions = async (
   token: JWT,

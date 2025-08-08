@@ -1,9 +1,0 @@
-{
-  "root": [
-    "./authoptions.ts",
-    "./mongo.ts",
-    "./user.model.ts"
-  ],
-  "errors": true,
-  "version": "5.8.3"
-}

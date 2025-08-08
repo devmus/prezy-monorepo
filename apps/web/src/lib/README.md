@@ -28,10 +28,10 @@ This utility provides a robust MongoDB connection management system for the Prez
 ### Basic Connection
 
 ```typescript
-import { connectToDatabase, getDatabase, getCollection } from '@/lib/mongodb';
+import { connectDB, getDatabase, getCollection } from '@prezy/authdb';
 
 // Connect to database
-const { client, db } = await connectToDatabase();
+const { client, db } = await connectDB();
 
 // Get database instance
 const db = await getDatabase();
@@ -43,9 +43,9 @@ const usersCollection = await getCollection('users');
 ### Custom Connection Options
 
 ```typescript
-import { connectToDatabase } from '@/lib/mongo';
+import { connectDB } from '@prezy/auth';
 
-const { client, db } = await connectToDatabase({
+const { client, db } = await connectDB({
     uri: 'mongodb://localhost:27017',
     dbName: 'prezy',
     maxPoolSize: 20,
@@ -57,7 +57,7 @@ const { client, db } = await connectToDatabase({
 ### Health Check
 
 ```typescript
-import { checkDatabaseHealth } from '@/lib/mongodb';
+import { checkDatabaseHealth } from '@prezy/authdb';
 
 const isHealthy = await checkDatabaseHealth();
 if (isHealthy) {
@@ -70,7 +70,7 @@ if (isHealthy) {
 ### Graceful Shutdown
 
 ```typescript
-import { closeConnection } from '@/lib/mongodb';
+import { closeConnection } from '@prezy/authdb';
 
 // Close connection when shutting down
 await closeConnection();
@@ -90,7 +90,7 @@ await closeConnection();
 
 ```typescript
 // app/api/users/route.ts
-import { getCollection } from '@/lib/mongodb';
+import { getCollection } from '@prezy/authdb';
 import { NextResponse } from 'next/server';
 
 export async function GET() {
