@@ -3,7 +3,7 @@ import { IService } from './service';
 
 /////////////////////////////////////////////
 // COMMON
-/////////////////////////////////////////////
+/////////
 
 export interface ApiErrorResponse {
     success: false;
@@ -17,12 +17,12 @@ export interface ApiSuccessResponse<T> {
 
 /////////////////////////////////////////////
 // STORES
-/////////////////////////////////////////////
+/////////
 
 /////////////////////////////////////////////
 // /api/stores/add
 export interface AddStoreRequest {
-    name: string;
+    store: IStore;
 }
 
 export type AddStoreResponse = ApiSuccessResponse<AddStoreRequest> | ApiErrorResponse;
@@ -45,7 +45,7 @@ export type GetStoreResponse = ApiSuccessResponse<GetStoreRequest> | ApiErrorRes
 
 /////////////////////////////////////////////
 // SERVICES
-/////////////////////////////////////////////
+///////////
 
 /////////////////////////////////////////////
 // /api/services/add
@@ -71,3 +71,13 @@ export interface GetServiceRequest {
 }
 
 export type GetServiceResponse = ApiSuccessResponse<GetServiceRequest> | ApiErrorResponse;
+
+/////////////////////////////////////////////
+// PLACES
+/////////
+import { Prediction } from '@/types';
+/////////////////////////////////////////////
+// /api/places/autocomplete
+export type AutocompleteRequest = Prediction[];
+
+export type AutocompleteResponse = ApiSuccessResponse<AutocompleteRequest> | ApiErrorResponse;

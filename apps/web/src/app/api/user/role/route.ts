@@ -11,13 +11,13 @@ export async function PATCH(req: Request) {
         return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
     }
 
-    const { language } = await req.json();
-    if (!['en', 'sv', 'th'].includes(language)) {
-        return NextResponse.json({ error: 'Invalid language' }, { status: 400 });
+    const { role } = await req.json();
+    if (!['user', 'shopkeeper'].includes(role)) {
+        return NextResponse.json({ error: 'Invalid role' }, { status: 400 });
     }
 
     await connectDB();
-    await User.updateOne({ email: session.user.email }, { language });
+    await User.updateOne({ email: session.user.email }, { role });
 
     return NextResponse.json({ success: true });
 }

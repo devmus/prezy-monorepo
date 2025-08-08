@@ -46,16 +46,16 @@ export const LangProvider = ({ children }: { children: React.ReactNode }) => {
     const { user } = useAuth(); // ✅ use custom hook
 
     useEffect(() => {
-        // First priority: user's preferred language
-        if (user?.language && ['en', 'sv', 'th'].includes(user.language)) {
-            setLangState(user.language as Lang);
-            return;
-        }
+        // First priority: local storage
+        const stored = localStorage.getItem('lang') as Lang | null;
 
-        // Fallback: localStorage
-        const storedLang = localStorage.getItem('lang') as Lang;
-        if (storedLang && translations[storedLang]) {
-            setLangState(storedLang as Lang);
+        if (user?.language) {
+            // Logged in: prefer DB lang, override localStorage
+            setLangState(user.language);
+            localStorage.setItem('lang', user.language);
+        } else if (stored) {
+            // Not logged in: use stored localStorage lang
+            setLangState(stored);
         }
     }, [user?.language]);
 

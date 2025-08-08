@@ -22,10 +22,7 @@ import { useLang } from '@/context/LangContext';
 import { useAuth } from '@/hooks/useAuth';
 
 export default function Sidebar() {
-    const {
-        user,
-        // , isLoggedIn, isLoading, isAdmin
-    } = useAuth();
+    const { user } = useAuth();
     const [isCollapsed, setIsCollapsed] = useState(false);
     const { t } = useLang();
 
@@ -59,6 +56,9 @@ export default function Sidebar() {
     const tertiaryItems: NavigationItems[] = user
         ? [
               { icon: CircleUserRound, label: t('sidebar.profile'), href: '/profile' },
+              ...(user.role === 'shopkeeper'
+                  ? [{ icon: Store, label: t('sidebar.myStore'), href: '/stores/manage' }]
+                  : []),
               { icon: LogOut, label: t('sidebar.logout'), href: '/login' },
           ]
         : [{ icon: LogIn, label: t('sidebar.login'), href: '/login' }];

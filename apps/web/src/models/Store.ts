@@ -22,6 +22,15 @@ const StoreSchema: Schema = new Schema<IStore>(
             trim: true,
             maxlength: [100, 'Store category cannot exceed 100 characters'],
         },
+        shopkeeper: {
+            type: String,
+            required: [true, 'Shopkeeper is required'],
+        },
+        status: {
+            type: String,
+            enum: ['created', 'certified', 'delisted'],
+            required: [true, 'Status is required'],
+        },
         location: {
             address: {
                 type: String,

@@ -6,8 +6,10 @@ import useSWR from 'swr';
 import { fetcher } from '@/lib/fetcher';
 import { GetStoreResponse } from '@/types/api';
 import ServiceCard from '@/components/ui/ServiceCard';
+import { useAuth } from '@/hooks/useAuth';
 
 export default function StoreDetailsPage() {
+    const { user } = useAuth();
     const { id } = useParams<{ id: string }>();
     const {
         data: store,
@@ -22,7 +24,7 @@ export default function StoreDetailsPage() {
 
     const currentStore = store.data.store;
 
-    console.log(currentStore);
+    const myStore = user?.email === currentStore.shopkeeper;
 
     return (
         <div className="flex flex-1 flex-col h-full p-8 justify-between">
@@ -48,12 +50,14 @@ export default function StoreDetailsPage() {
                     </div>
                 </div>
             )}
-            <button
-                className="bg-blue-500 text-white px-4 py-2 rounded-md"
-                onClick={() => router.push(`/service/add/${id}`)}
-            >
-                Add Service
-            </button>
+            {myStore && (
+                <button
+                    className="bg-blue-500 text-white px-4 py-2 rounded-md"
+                    onClick={() => router.push(`/service/add/${id}`)}
+                >
+                    Add Service
+                </button>
+            )}
         </div>
     );
 }

@@ -1,0 +1,6 @@
+//workspace settings.json
+
+{
+  "editor.suggestSelection": "first",
+  "editor.snippetSuggestions": "top"
+}

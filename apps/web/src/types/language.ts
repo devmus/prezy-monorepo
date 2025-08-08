@@ -27,3 +27,5 @@ export type LanguageOption = {
     label: FullTranslationKey;
     flagSrc: string;
 };
+
+export type LanguageSetting = 'en' | 'sv' | 'th';

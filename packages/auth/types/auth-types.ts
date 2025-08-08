@@ -1,6 +1,6 @@
 // packages/auth/types/auth-types.ts
 
-export type UserRole = "user" | "shopkeeper" | "admin";
+import { UserRole } from "./user";
 
 export interface SessionUser {
   name?: string | null;

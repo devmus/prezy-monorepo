@@ -1,8 +1,8 @@
 'use client';
 
 import useSWR from 'swr';
-import { IService } from '@/types';
 import { fetcher } from '@/lib/fetcher';
+import { IService } from '@/types';
 import { ListServicesResponse } from '@/types/api';
 import ServiceCard from '@/components/ui/ServiceCard';
 

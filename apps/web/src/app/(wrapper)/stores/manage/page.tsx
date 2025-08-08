@@ -1,4 +1,4 @@
-// apps\web\src\app\(wrapper)\stores\page.tsx
+// apps\web\src\app\(wrapper)\stores\manage\page.tsx
 'use client';
 
 import { useRouter } from 'next/navigation';
@@ -15,7 +15,7 @@ export default function StoresPage() {
         data: stores,
         error,
         isLoading,
-    } = useSWR<ListStoresResponse>('/api/stores/list', fetcher);
+    } = useSWR<ListStoresResponse>('/api/stores/list?mine=true', fetcher);
 
     if (isLoading) return <div>Loading...</div>;
     if (error) return <div>Error loading stores: {error.message}</div>;
@@ -25,9 +25,9 @@ export default function StoresPage() {
         <div className="flex flex-1 flex-col h-full p-8 justify-between">
             <div className="">
                 <div className="max-w-4xl mx-auto">
-                    <h1 className="text-3xl font-bold mb-6">Stores on Prezy</h1>
+                    <h1 className="text-3xl font-bold mb-6">My stores</h1>
                     <p className="text-muted-foreground mb-8">
-                        Here are the stores. Click on a store to view its details.
+                        These are your stores. Click on a store to view and edit its details.
                     </p>
                     <ListedStores stores={stores} user={user} />
                 </div>
@@ -37,7 +37,7 @@ export default function StoresPage() {
                     className="bg-blue-500 text-white px-4 py-2 rounded-md"
                     onClick={() => router.push(`/store/add`)}
                 >
-                    Add my store
+                    Add a store
                 </button>
             )}
         </div>

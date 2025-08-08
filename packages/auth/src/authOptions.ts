@@ -3,8 +3,8 @@
 import GoogleProvider from "next-auth/providers/google";
 import { MongoDBAdapter } from "@next-auth/mongodb-adapter";
 import { NextAuthOptions } from "next-auth";
-import { findOrCreateUser } from "@prezy/auth";
 import { clientPromise } from "@prezy/auth";
+import { loginFunctions } from "../lib/loginFunctions";
 
 export const authOptions: NextAuthOptions = {
   providers: [
@@ -13,15 +13,15 @@ export const authOptions: NextAuthOptions = {
       clientSecret: process.env.GOOGLE_CLIENT_SECRET!,
     }),
   ],
+  //adapter creates the user
   adapter: MongoDBAdapter(clientPromise),
   session: { strategy: "jwt" },
   callbacks: {
-    async jwt({ token, user, account, profile }) {
-      if (user?.email) {
-        const dbUser = await findOrCreateUser(user.email, user.name);
-        token.role = dbUser.role;
-        token._id = dbUser._id;
+    async jwt({ token, user, account }) {
+      if (user) {
+        await loginFunctions(token, user, account);
       }
+
       return token;
     },
     async session({ session, token }) {

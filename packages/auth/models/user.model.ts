@@ -1,6 +1,7 @@
+import { UserData } from "@prezy/auth";
 import mongoose from "mongoose";
 
-const UserSchema = new mongoose.Schema({
+const UserSchema = new mongoose.Schema<UserData>({
   email: { type: String, unique: true },
   name: String,
   role: {

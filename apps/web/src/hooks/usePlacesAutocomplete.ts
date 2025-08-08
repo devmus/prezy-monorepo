@@ -1,4 +1,5 @@
 import { Prediction } from '@/types';
+import { AutocompleteResponse } from '@/types/api';
 import { useEffect, useState } from 'react';
 
 export function usePlacesAutocomplete(input: string) {
@@ -14,10 +15,10 @@ export function usePlacesAutocomplete(input: string) {
 
             setLoading(true);
             const res = await fetch(`/api/places/autocomplete?input=${input}`);
-            const data = await res.json();
+            const data: AutocompleteResponse = await res.json();
 
             if (data.success) {
-                setPredictions(data.predictions);
+                setPredictions(data.data);
             } else {
                 console.error('Places API error:', data.error);
                 setPredictions([]);

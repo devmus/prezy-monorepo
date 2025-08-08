@@ -1,3 +1,4 @@
+import { AutocompleteResponse } from '@/types/api';
 import { NextRequest, NextResponse } from 'next/server';
 
 export async function GET(req: NextRequest) {
@@ -5,7 +6,10 @@ export async function GET(req: NextRequest) {
     const input = searchParams.get('input');
 
     if (!input) {
-        return NextResponse.json({ success: false, error: 'Missing input' }, { status: 400 });
+        return NextResponse.json<AutocompleteResponse>(
+            { success: false, error: 'Missing input' },
+            { status: 400 },
+        );
     }
 
     const url = `https://maps.googleapis.com/maps/api/place/autocomplete/json?input=${encodeURIComponent(
@@ -16,10 +20,13 @@ export async function GET(req: NextRequest) {
         const res = await fetch(url);
         const data = await res.json();
 
-        return NextResponse.json({ success: true, predictions: data.predictions }, { status: 200 });
+        return NextResponse.json<AutocompleteResponse>(
+            { success: true, data: data.predictions },
+            { status: 200 },
+        );
     } catch (err) {
         console.error('Autocomplete API error:', err);
-        return NextResponse.json(
+        return NextResponse.json<AutocompleteResponse>(
             { success: false, error: 'Failed to fetch autocomplete results' },
             { status: 500 },
         );

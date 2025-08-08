@@ -6,6 +6,8 @@ export interface IStore extends Document {
     name: string;
     description: string;
     category: string;
+    shopkeeper: string;
+    status: string;
     location: {
         address: string;
         city: string;

@@ -8,8 +8,12 @@ export default function AuthButton() {
 
     const handleLogin = () => {
         const lang = localStorage.getItem('lang') || 'en';
-        document.cookie = `preferred_lang=${lang}; path=/`;
-        signIn('google');
+
+        signIn('google', {
+            callbackUrl: '/login',
+            // This param will be available in the JWT callback as `account.params`
+            preferred_lang: lang,
+        });
     };
 
     if (isLoading) return <p>Loading...</p>;

@@ -6,12 +6,10 @@ import Image from 'next/image';
 
 export interface ServiceCardProps {
     service: IService;
-    serviceList: boolean;
+    serviceList: boolean; // Servicelist is set to true to show store name or false to show description
 }
 
 export default function ServiceCard({ service, serviceList }: ServiceCardProps) {
-    console.log(service);
-
     return (
         <Link href={`/service/${service._id}`}>
             <div className="group transition-transform duration-200 hover:-translate-y-1">

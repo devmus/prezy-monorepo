@@ -6,6 +6,8 @@ import { Listbox } from '@headlessui/react';
 import { Check, ChevronDown } from 'lucide-react';
 import Image from 'next/image';
 import { useState, useEffect } from 'react';
+// import { useAuth } from '@/hooks/useAuth';
+// import { usePathname } from 'next/navigation';
 
 const languageOptions: LanguageOption[] = [
     { code: 'en', label: 'common.english', flagSrc: '/images/flags/gb.webp' },
@@ -18,8 +20,10 @@ interface LanguageSwitcherProps {
 }
 
 export default function LanguageSwitcher({ isCollapsed = false }: LanguageSwitcherProps) {
+    // const { user } = useAuth();
     const { lang, setLang, t } = useLang();
     const [selected, setSelected] = useState(languageOptions[0]);
+    // const pathname = usePathname();
 
     useEffect(() => {
         const current = languageOptions.find((l) => l.code === lang);
@@ -30,6 +34,8 @@ export default function LanguageSwitcher({ isCollapsed = false }: LanguageSwitch
         setSelected(option);
         setLang(option.code);
     };
+
+    // if (user && pathname === '/profile') return null;
 
     return (
         <div className={`${!isCollapsed ? 'w-40' : 'w-12'}`}>
