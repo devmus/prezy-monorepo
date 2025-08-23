@@ -1,6 +1,8 @@
 import { getServerSession } from 'next-auth';
-import { authOptions, User, UserRole } from '@prezy/auth';
-import { connectDB } from '@prezy/auth';
+import { connectToDatabase } from '@prezy/db';
+import { authOptions } from '@prezy/auth';
+import { User } from '@prezy/models';
+import { UserRole } from '@prezy/types';
 
 // Define the type for the lean user object
 interface LeanUser {
@@ -26,7 +28,7 @@ export async function requireRoles(roles: UserRole[]): Promise<RequireRoleResult
         return { authorized: false, error: 'Unauthorized: No session' };
     }
 
-    await connectDB();
+    await connectToDatabase();
 
     const user = (await User.findOne({ email: session.user.email }).lean()) as LeanUser | null;
 

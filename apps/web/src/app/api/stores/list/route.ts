@@ -1,13 +1,13 @@
 import { NextResponse } from 'next/server';
-import { connectDB } from '@prezy/auth';
-import Store from '@/models/Store';
+import { connectToDatabase } from '@prezy/db';
+import { Store } from '@prezy/models';
+import { authOptions } from '@prezy/auth';
 import { ListStoresResponse } from '@/types/api';
 import { getServerSession } from 'next-auth';
-import { authOptions } from '@prezy/auth';
 
 export async function GET(req: Request) {
     try {
-        await connectDB();
+        await connectToDatabase();
 
         const url = new URL(req.url);
         const mineOnly = url.searchParams.get('mine') === 'true';

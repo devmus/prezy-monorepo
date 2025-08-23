@@ -1,11 +1,11 @@
 'use client';
 
-import { IStore, UserData } from '@/types';
+import { IStore, UserDTO } from '@prezy/types';
 import StoreCard from '@/components/ui/StoreCard';
 
 interface ListedStoresParams {
     stores: { data: { stores: IStore[] } };
-    user: UserData | null;
+    user: UserDTO | null;
 }
 
 export default function ListedStores({ stores, user }: ListedStoresParams) {

@@ -2,7 +2,7 @@
 
 import useSWR from 'swr';
 import { fetcher } from '@/lib/fetcher';
-import { IService } from '@/types';
+import { IService } from '@prezy/types';
 import { ListServicesResponse } from '@/types/api';
 import ServiceCard from '@/components/ui/ServiceCard';
 

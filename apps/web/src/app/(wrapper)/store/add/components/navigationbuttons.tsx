@@ -1,5 +1,5 @@
 import { Button } from '@/components/ui/button';
-import { StoreLocation } from '@/types';
+import { StoreLocation } from '@prezy/types';
 
 interface NavigationButtonsProps {
     formStep: 'start' | 'name' | 'location' | 'category' | 'done';

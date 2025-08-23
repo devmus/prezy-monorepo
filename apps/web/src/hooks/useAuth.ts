@@ -1,7 +1,7 @@
 // hooks/useAuth.ts
 import useSWR from 'swr';
 import { fetcher } from '@/lib/fetcher'; // must return parsed JSON
-import { UserData } from '@/types';
+import { UserDTO } from '@prezy/types';
 
 export function useAuth() {
     const {
@@ -9,7 +9,7 @@ export function useAuth() {
         error,
         isLoading,
         mutate: refetch,
-    } = useSWR<UserData>('/api/user/me', fetcher);
+    } = useSWR<UserDTO>('/api/user/me', fetcher);
 
     return {
         user: user || null,

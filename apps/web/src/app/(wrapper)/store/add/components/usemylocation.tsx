@@ -1,6 +1,5 @@
 import { Button } from '@/components/ui/button';
-import { StoreLocation } from '@/types';
-
+import { StoreLocation } from '@prezy/types';
 
 export default function UseMyLocation({
     setLocation,
@@ -27,7 +26,7 @@ export default function UseMyLocation({
 
                         if (data.success) {
                             console.log(data.location);
-                            
+
                             setLocation(data.location);
                         } else {
                             alert('Failed to get address from location');

@@ -1,6 +1,6 @@
 'use client';
 
-import { IService } from '@/types';
+import { IService } from '@prezy/types';
 import Link from 'next/link';
 import Image from 'next/image';
 

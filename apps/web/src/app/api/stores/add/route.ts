@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server';
 
-import { connectDB } from '@prezy/auth';
-import Store from '@/models/Store';
+import { connectToDatabase } from '@prezy/db';
+import { Store } from '@prezy/models';
 import { AddStoreResponse } from '@/types/api';
 import { requireRoles } from '@/lib/auth/checkRole';
 
@@ -16,7 +16,7 @@ export async function POST(request: NextRequest) {
     }
 
     try {
-        await connectDB();
+        await connectToDatabase();
         const { name, category, location } = await request.json();
 
         if (!name || typeof name !== 'string' || name.trim().length === 0) {

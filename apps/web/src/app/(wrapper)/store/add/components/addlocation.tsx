@@ -1,6 +1,6 @@
 import { Button } from '@/components/ui/button';
 import UseMyLocation from './usemylocation';
-import { StoreLocation } from '@/types';
+import { StoreLocation } from '@prezy/types';
 import { LocationAutocomplete } from '@/components/LocationAutocomplete';
 import { useState } from 'react';
 

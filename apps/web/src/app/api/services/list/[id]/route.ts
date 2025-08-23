@@ -1,8 +1,7 @@
 import { NextResponse } from 'next/server';
 
-import { connectDB } from '@prezy/auth';
-import { Store } from '@/models/Store';
-import { Service } from '@/models/Service';
+import { connectToDatabase } from '@prezy/db';
+import { Store, Service } from '@prezy/models';
 
 import { GetServiceResponse } from '@/types/api';
 
@@ -12,7 +11,7 @@ export async function GET(request: Request, { params }: { params: Promise<{ id: 
     const { id } = await params;
 
     try {
-        await connectDB();
+        await connectToDatabase();
 
         const service = await Service.findById(id).populate('store');
 

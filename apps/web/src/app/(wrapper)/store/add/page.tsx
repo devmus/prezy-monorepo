@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import { StoreLocation } from '@/types';
+import { StoreLocation } from '@prezy/types';
 import AddStoreForm from './components/addstoreform';
 
 import { Separator } from '@/components/ui/separator';

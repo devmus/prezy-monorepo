@@ -5,7 +5,7 @@ import { useParams } from 'next/navigation';
 import useSWR from 'swr';
 import { fetcher } from '@/lib/fetcher';
 import { GetServiceResponse } from '@/types/api';
-import { IService } from 'packages/auth/types/service';
+import { IService } from '@prezy/types';
 import Image from 'next/image';
 import Link from 'next/link';
 
@@ -27,7 +27,7 @@ export default function ServiceDetailsPage() {
         <div className="flex flex-1 flex-col items-center justify-center min-h-screen p-6 bg-gray-50 min-w-[300px]">
             {currentService && (
                 <div className="w-full max-w-3xl bg-white p-8 rounded-tl-2xl rounded-b-2xl shadow-lg relative">
-                    <Link href={`/store/${currentService.store.id}`} className="mb-4">
+                    <Link href={`/store/${currentService.store._id}`} className="mb-4">
                         <span className="flex flex-row justify-center items-center no-wrap absolute h-[32px] -top-8 -right-0 bg-[white] text-blue-800 px-4 text-xs font-semibold rounded-t-md hover:bg-blue-200 transition">
                             <svg
                                 xmlns="http://www.w3.org/2000/svg"

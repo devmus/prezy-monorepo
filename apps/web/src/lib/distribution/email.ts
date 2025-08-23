@@ -1,4 +1,4 @@
-import { IGiftcard, IService } from '@prezy/auth';
+import { IGiftcard, IService } from '@prezy/types';
 
 /**
  * Send receipt email to the buyer

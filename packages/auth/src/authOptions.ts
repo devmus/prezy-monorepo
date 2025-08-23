@@ -1,10 +1,18 @@
 // packages\auth\src\authOptions.ts
+import "server-only";
 
-import GoogleProvider from "next-auth/providers/google";
+import { createRequire } from "node:module";
 import { MongoDBAdapter } from "@next-auth/mongodb-adapter";
 import { NextAuthOptions } from "next-auth";
-import { clientPromise } from "../lib/mongo";
-import { loginFunctions } from "../lib/loginFunctions";
+import { clientPromise } from "@prezy/db";
+import { loginFunctions } from "./loginFunctions.js";
+
+const require = createRequire(import.meta.url);
+// Force the CJS default export consistently
+const GoogleProvider = require("next-auth/providers/google").default as (args: {
+  clientId: string;
+  clientSecret: string;
+}) => any;
 
 export const authOptions: NextAuthOptions = {
   providers: [

@@ -1,5 +1,5 @@
-import { IStore } from '@prezy/auth';
-import { IService } from '@prezy/auth';
+import { IStore } from '@prezy/types';
+import { IService } from '@prezy/types';
 
 /////////////////////////////////////////////
 // COMMON

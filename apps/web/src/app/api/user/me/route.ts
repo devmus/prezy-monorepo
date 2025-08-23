@@ -1,6 +1,9 @@
-// apps/web/src/app/api/user/me.ts
+// apps/web/src/app/api/user/me/route.ts
+
 import { getServerSession } from 'next-auth';
-import { authOptions, connectDB, User } from '@prezy/auth';
+import { connectToDatabase } from '@prezy/db';
+import { authOptions } from '@prezy/auth';
+import { User } from '@prezy/models';
 import { NextResponse } from 'next/server';
 
 export async function GET() {
@@ -10,7 +13,7 @@ export async function GET() {
         return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
     }
 
-    await connectDB();
+    await connectToDatabase();
     const user = await User.findOne({ email: session.user.email });
 
     if (!user) {

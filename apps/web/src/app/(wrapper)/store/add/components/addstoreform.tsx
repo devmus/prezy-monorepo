@@ -1,6 +1,6 @@
 'use client';
 
-import { StoreLocation } from '@/types';
+import { StoreLocation } from '@prezy/types';
 import AddName from './addname';
 import StartForm from './startform';
 import AddLocation from './addlocation';

@@ -1,17 +1,12 @@
 import { motion, AnimatePresence } from 'framer-motion';
 import { Button } from '@/components/ui/button';
 import { useAuth } from '@/hooks/useAuth';
+import { DeliveryInfo } from '@prezy/types';
 
 const variants = {
     open: { opacity: 1, height: 'auto', transition: { duration: 0.3 } },
     collapsed: { opacity: 0, height: 0, overflow: 'hidden', transition: { duration: 0.3 } },
 };
-
-interface DeliveryInfo {
-    receiptEmail: string;
-    giftCardEmail: string;
-    message: string;
-}
 
 interface BuyStepMessageParams {
     formStep: 'details' | 'method' | 'delivery' | 'confirm';
@@ -47,17 +42,17 @@ export default function BuyStepMessage({
     const handleUseSameEmail = () => {
         setDeliveryInfo({
             ...deliveryInfo,
-            giftCardEmail: deliveryInfo.receiptEmail,
+            recipientEmail: deliveryInfo.receiptEmail,
         });
     };
 
     const handleConfirm = () => {
-        if (deliveryInfo.receiptEmail && deliveryInfo.giftCardEmail) {
+        if (deliveryInfo.receiptEmail && deliveryInfo.recipientEmail) {
             setFormStep('confirm');
         }
     };
 
-    const isFormValid = deliveryInfo.receiptEmail && deliveryInfo.giftCardEmail;
+    const isFormValid = deliveryInfo.receiptEmail && deliveryInfo.recipientEmail;
 
     return (
         <>
@@ -117,10 +112,10 @@ export default function BuyStepMessage({
                                             <div className="flex space-x-2">
                                                 <input
                                                     type="email"
-                                                    value={deliveryInfo.giftCardEmail}
+                                                    value={deliveryInfo.recipientEmail}
                                                     onChange={(e) =>
                                                         handleInputChange(
-                                                            'giftCardEmail',
+                                                            'recipientEmail',
                                                             e.target.value,
                                                         )
                                                     }

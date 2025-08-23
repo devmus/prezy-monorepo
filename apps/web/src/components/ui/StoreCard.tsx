@@ -1,6 +1,6 @@
 'use client';
 
-import { IStore, UserData } from '@/types';
+import { IStore, UserDTO } from '@prezy/types';
 import { BadgeCheck, CheckCircle, CircleX } from 'lucide-react';
 import Link from 'next/link';
 
@@ -8,7 +8,7 @@ import Link from 'next/link';
 
 export interface StoreCardProps {
     store: IStore;
-    user: UserData | null;
+    user: UserDTO | null;
 }
 
 export default function StoreCard({ store, user }: StoreCardProps) {

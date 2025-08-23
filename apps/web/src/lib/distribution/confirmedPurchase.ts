@@ -1,7 +1,8 @@
 import { createGiftcard } from './giftcard';
 import { sendReceiptEmail, sendGiftcardEmail } from './email';
-import { connectDB, DeliveryInfo } from '@prezy/auth';
-import { Service } from '@prezy/auth';
+import { Service } from '@prezy/models';
+import { connectToDatabase } from '@prezy/db';
+import { DeliveryInfo } from '@prezy/types';
 
 export const confirmedPurchase = async (serviceId: string, deliveryInfo: DeliveryInfo) => {
     console.log('serviceId', serviceId);
@@ -9,7 +10,7 @@ export const confirmedPurchase = async (serviceId: string, deliveryInfo: Deliver
 
     try {
         // Connect to database
-        await connectDB();
+        await connectToDatabase();
 
         // Verify the service exists and get its details
         const service = await Service.findById(serviceId);
@@ -22,8 +23,18 @@ export const confirmedPurchase = async (serviceId: string, deliveryInfo: Deliver
 
         // Send e-mail for receipt and giftcard with message
         await Promise.all([
-            sendReceiptEmail(deliveryInfo.receiptEmail, service, giftcard, deliveryInfo.message),
-            sendGiftcardEmail(deliveryInfo.giftCardEmail, service, giftcard, deliveryInfo.message),
+            sendReceiptEmail(
+                deliveryInfo.receiptEmail,
+                service,
+                giftcard,
+                deliveryInfo.message || '',
+            ),
+            sendGiftcardEmail(
+                deliveryInfo.recipientEmail,
+                service,
+                giftcard,
+                deliveryInfo.message || '',
+            ),
         ]);
 
         console.log('Purchase confirmed successfully:', {
@@ -31,7 +42,7 @@ export const confirmedPurchase = async (serviceId: string, deliveryInfo: Deliver
             giftcardId: giftcard._id,
             giftcardUUID: giftcard.uuid,
             receiptEmail: deliveryInfo.receiptEmail,
-            receiverEmail: deliveryInfo.giftCardEmail,
+            receiverEmail: deliveryInfo.recipientEmail,
         });
 
         return {

@@ -5,7 +5,8 @@
 import { useAuth } from '@/hooks/useAuth';
 import { useLang } from '@/context/LangContext';
 import { useState } from 'react';
-import { LanguageSetting, UserRole } from '@/types';
+import { LanguageSetting } from '@/types';
+import { UserRole } from '@prezy/types';
 import { mutate } from 'swr';
 
 export default function ProfilePage() {

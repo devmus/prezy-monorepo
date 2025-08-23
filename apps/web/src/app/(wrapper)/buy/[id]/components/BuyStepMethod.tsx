@@ -1,6 +1,6 @@
 import { motion, AnimatePresence } from 'framer-motion';
 import { Button } from '@/components/ui/button';
-import { PaymentMethod } from '@/types';
+import { PaymentMethod } from '@prezy/types';
 
 const variants = {
     open: { opacity: 1, height: 'auto', transition: { duration: 0.3 } },

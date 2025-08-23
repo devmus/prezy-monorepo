@@ -1,5 +1,6 @@
-import { connectDB, DeliveryInfo } from '@prezy/auth';
-import { Giftcard, Service } from '@prezy/auth';
+import { connectToDatabase } from '@prezy/db';
+import { Giftcard, Service } from '@prezy/models';
+import { DeliveryInfo } from '@prezy/types';
 
 /**
  * Generate a random UUID with 10 characters (no special characters)
@@ -17,7 +18,7 @@ export const generateGiftcardUUID = (): string => {
  * Create a new giftcard document in the database
  */
 export const createGiftcard = async (serviceId: string, deliveryInfo: DeliveryInfo) => {
-    await connectDB();
+    await connectToDatabase();
 
     // Verify the service exists
     const service = await Service.findById(serviceId);
@@ -33,7 +34,7 @@ export const createGiftcard = async (serviceId: string, deliveryInfo: DeliveryIn
         service: serviceId,
         uuid,
         receiptEmail: deliveryInfo.receiptEmail,
-        receiverEmail: deliveryInfo.giftCardEmail,
+        receiverEmail: deliveryInfo.recipientEmail,
         status: false, // Not redeemed yet
         redeemDate: null,
     });

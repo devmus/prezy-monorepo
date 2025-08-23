@@ -2,7 +2,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import ServiceCard from '@/components/ui/ServiceCard';
 import StoreCard from '@/components/ui/StoreCard';
 import { Button } from '@/components/ui/button';
-import { IService } from '@/types';
+import { IService } from '@prezy/types';
 
 const variants = {
     open: { opacity: 1, height: 'auto', transition: { duration: 0.3 } },

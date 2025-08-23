@@ -1,7 +1,7 @@
 'use client';
 
 import MapWithMarker from '@/components/MapWithMarker';
-import { StoreLocation } from '@/types';
+import { StoreLocation } from '@prezy/types';
 
 type StorePreviewProps = {
     storeName: string;

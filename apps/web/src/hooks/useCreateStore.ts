@@ -1,15 +1,11 @@
 import { useState } from 'react';
 import { toast } from 'sonner';
-import { StoreLocation } from '@/types';
+import { StoreLocation } from '@prezy/types';
 
 export function useCreateStore(onStoreCreated?: () => Promise<void>) {
     const [loading, setLoading] = useState(false);
 
-    const addStore = async (
-        storeName: string,
-        storeCategory: string,
-        location: StoreLocation,
-    ) => {
+    const addStore = async (storeName: string, storeCategory: string, location: StoreLocation) => {
         if (!storeName.trim()) {
             toast.error('Please enter a store name');
             return;

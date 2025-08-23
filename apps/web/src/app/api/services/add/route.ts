@@ -1,12 +1,11 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { connectDB } from '@prezy/auth';
-import { Service } from '@/models/Service';
-import { Store } from '@/models/Store';
+import { connectToDatabase } from '@prezy/db';
+import { Store, Service } from '@prezy/models';
 import { AddServiceResponse } from '@/types/api';
 
 export async function POST(request: NextRequest) {
     try {
-        await connectDB();
+        await connectToDatabase();
         const { name, description, price, category, imageUrl, storeId } = await request.json();
 
         // Validate input

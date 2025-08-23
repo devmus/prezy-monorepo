@@ -43,7 +43,7 @@ const usersCollection = await getCollection('users');
 ### Custom Connection Options
 
 ```typescript
-import { connectDB } from '@prezy/auth';
+import { connectDB } from '@prezy/db';
 
 const { client, db } = await connectDB({
     uri: 'mongodb://localhost:27017',

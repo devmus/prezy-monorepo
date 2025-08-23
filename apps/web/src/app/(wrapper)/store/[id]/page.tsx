@@ -1,6 +1,6 @@
 'use client';
 
-import { IService } from '@/types';
+import { IService } from '@prezy/types';
 import { useParams, useRouter } from 'next/navigation';
 import useSWR from 'swr';
 import { fetcher } from '@/lib/fetcher';
